@@ -1,3 +1,9 @@
+// Deploy
+// Seperate logic out
+// Testing
+// Error handling
+
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');

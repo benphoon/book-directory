@@ -33,7 +33,7 @@ router.get('/:bookId', async (req, res) => {
 // Update a specific book
 router.patch('/:bookId', async (req, res) => {
     try {
-        const selectedBook = await Book.updateOne(
+        const selectedBook = await Book.findOneAndUpdate(
             { _id: req.params.bookId },
             {
                 $set:
@@ -42,12 +42,13 @@ router.patch('/:bookId', async (req, res) => {
                     year: req.body.year,
                     author: req.body.author
                 }
+            },
+            {
+                new: true
             }
         )
         res.json(selectedBook)
     } catch {
-        console.log(req.params.bookId)
-        console.log(err)
         res.json({ message: err })
     }
 })
